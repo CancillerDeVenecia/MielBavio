@@ -1,0 +1,39 @@
+.itemCount {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "minus count plus"
+    ". sum .";
+    align-items: baseline; 
+    background-color: rgb(29, 29, 29);
+    color: white;
+    font-size: 1.5rem;
+}
+
+
+.plus {
+    grid-area: plus;
+    background-color: transparent;
+    border: none;
+}
+
+.minus {
+    grid-area: minus;
+    background-color: transparent;
+    border: none;
+}
+
+.itemCantidad {
+    padding: 15px;
+    grid-area: count;
+}
+
+.itemAdd {
+    grid-area: sum;
+    justify-items: center;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border:none;
+    color: #fbbd08;
+}
+

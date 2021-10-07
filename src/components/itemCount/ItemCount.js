@@ -3,14 +3,14 @@ import "./itemCount.css";
 import {ReactComponent as Plus} from "../../assets/svg/plus-circle-dotted.svg";
 import {ReactComponent as Minus} from "../../assets/svg/dash-circle-dotted.svg";
 
-const ItemCount = ({stock, initial, onAdd}) => {
+const ItemCount = ({stock, initial}) => {
 
     //Contador y sus metodos
     const[itemCantidad, setItemCantidad] = useState(initial);
     
-    if(stock === 0) {
+/*    if(stock === 0) {
         onAdd = () => alert("Perdón, no tenemos stock!");
-    }
+    } */
 
     const addItem = () => {
         if(itemCantidad < stock) {
@@ -38,7 +38,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 <Plus width="30" height="30" color="#fbbd08"/>
             </button>
 
-            <button className="itemAdd" onClick={onAdd(itemCantidad)}><p>AGREGAR</p></button>
+            <button className="itemAdd"><p>AGREGAR</p></button>
             
         </div>  
     )

@@ -5,9 +5,9 @@
     "minus count plus"
     ". sum .";
     align-items: baseline; 
+    padding: 0.2vh;
     background-color: rgb(29, 29, 29);
     color: white;
-    font-size: 1.5rem;
 }
 
 
@@ -24,15 +24,16 @@
 }
 
 .itemCantidad {
-    padding: 15px;
+    padding: 1vh;
     grid-area: count;
 }
 
 .itemAdd {
+    font-family: 'Roboto', sans-serif;
     grid-area: sum;
     justify-items: center;
-    font-size: 1.5rem;
-    background-color: transparent;
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.288);
     border:none;
     color: #fbbd08;
 }

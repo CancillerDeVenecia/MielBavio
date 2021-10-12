@@ -3,8 +3,8 @@ import ItemList from '../itemList/itemList';
 
 const ItemListContainer = () => {
     return (
-        <div>            
-            <ItemList />
+        <div>          
+            <ItemList  />
         </div>
     )
 }

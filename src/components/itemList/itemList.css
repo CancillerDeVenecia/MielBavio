@@ -1,0 +1,37 @@
+#itemList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#itemList .item {
+  margin: 9px;
+  border: 1px solid black;
+  width: 200px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#itemList .item h2 {
+  font-family: 'Quicksand', sans-serif;
+  margin: 5px;
+  font-size: vh;
+}
+
+#itemList .item img {
+  max-height: 200px;
+  width: auto;
+  max-width: 80%;
+}
+/*# sourceMappingURL=itemList.css.map */

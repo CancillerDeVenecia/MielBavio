@@ -1,13 +1,12 @@
 import React from 'react';
-import './item.css';
 import ItemCount from '../itemCount/ItemCount';
 import "../../boostrap/dist/css/bootstrap.css";
 
 const Item = ({ props }) => {
     return (
-        <div className="item">
+        <div>
             <div>
-                <h2>{props.title} - {props.id}</h2>
+                <h2>{props.title}</h2>
             </div>
             <img src={props.pictureUrl} alt={props.title} width="300px" /> 
             <h5>{props.price}</h5>

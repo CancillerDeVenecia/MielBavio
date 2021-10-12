@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Item from "../item/Item.js";
+import "./itemList.css";
 
 
 const ItemList = () => {
@@ -11,11 +12,11 @@ const ItemList = () => {
     })
 
     return (
-        <div>
+        <div id="itemList">
             {productos.map((producto) => {
                 console.log(producto);
                 return(
-                    <div>                        
+                    <div key={producto.id} className="item">                        
                         <Item props={producto}></Item>
                     </div>    
                 )

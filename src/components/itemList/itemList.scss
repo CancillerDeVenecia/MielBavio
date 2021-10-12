@@ -1,0 +1,27 @@
+#itemList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    
+    .item {
+        margin: 9px;
+        border: 1px solid black;
+        width: 200px;
+        font-family: 'Roboto', sans-serif;
+        h2 {
+            font-family: 'Quicksand', sans-serif;
+            margin: 5px;
+            font-size: vh;
+            }
+        img {
+            max-height: 200px;
+            width: auto;
+            max-width: 80%;
+        }
+    }
+}
+
+
+

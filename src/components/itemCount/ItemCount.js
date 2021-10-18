@@ -29,16 +29,16 @@ const ItemCount = ({stock, initial}) => {
     return (
         <div className="itemCount">
             <button className="minus" onClick={removeItem}>
-                <Minus color="#fbbd08"/>
+                <Minus className="w3-text-amber"/>
             </button>
 
-            <p className="itemCantidad">{itemCantidad}</p>
+            <p className="itemCantidad w3-text-amber">{itemCantidad}</p>
     
             <button className="plus" onClick={addItem}>
-                <Plus color="#fbbd08"/>
+                <Plus className="w3-text-amber"/>
             </button>
 
-            <button className="itemAdd"><p>AGREGAR</p></button>
+            <button className="itemAdd">AGREGAR</button>
             
         </div>  
     )

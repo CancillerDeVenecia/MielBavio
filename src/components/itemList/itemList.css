@@ -17,21 +17,16 @@
 }
 
 #itemList .item {
-  margin: 9px;
-  border: 1px solid black;
-  width: 200px;
   font-family: 'Roboto', sans-serif;
 }
 
 #itemList .item h2 {
   font-family: 'Quicksand', sans-serif;
-  margin: 5px;
-  font-size: vh;
+  padding: 5px;
 }
 
-#itemList .item img {
-  max-height: 200px;
-  width: auto;
-  max-width: 80%;
+#itemList .item .precio {
+  font-size: 20px;
+  margin-top: 9px;
 }
 /*# sourceMappingURL=itemList.css.map */

@@ -1,26 +1,8 @@
-import { useState } from 'react';
 import "./itemCount.css";
 import {ReactComponent as Plus} from "../../assets/svg/plus-circle-dotted.svg";
 import {ReactComponent as Minus} from "../../assets/svg/dash-circle-dotted.svg";
 
-const ItemCount = ({stock, initial, onAdd}) => {
-
-    //Contador y sus metodos
-    const[itemCantidad, setItemCantidad] = useState(parseInt(initial));
-    
-
-
-    const addItem = () => {
-        if(itemCantidad < stock) {
-            setItemCantidad(itemCantidad + 1);
-        }
-    }
-
-    const removeItem = () => {
-        if(itemCantidad > 0) {
-            setItemCantidad(itemCantidad - 1);
-        }
-    }
+const ItemCount = ({sumItem, removeItem, itemCantidad, addItem}) => {
 
     //Render
 
@@ -32,11 +14,11 @@ const ItemCount = ({stock, initial, onAdd}) => {
 
             <p className="itemCantidad w3-text-amber">{itemCantidad}</p>
     
-            <button className="plus" onClick={addItem}>
+            <button className="plus" onClick={sumItem}>
                 <Plus className="w3-text-amber"/>
             </button>
 
-            <button className="itemAdd" onClick={onAdd(itemCantidad)}>Agregar</button>
+            <button className="itemAdd" onClick={addItem}>Agregar</button>
             
         </div>  
     )

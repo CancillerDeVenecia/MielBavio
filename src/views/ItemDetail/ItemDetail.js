@@ -3,14 +3,15 @@ import ItemCount from '../../components/itemCount/ItemCount';
 
 const ItemDetail = ({ match }) => {
     const [item, setItem] = useState({});
+    const [cantidadSumada, setCantidadSumada] = useState ("0");
 
     useEffect(() => {
         fetch(`https://my-json-server.typicode.com/CancillerDeVenecia/mielJson/productos/${match.params.id}`).then((response) => response.json()).then((data) => setItem(data));
     }, []);
 
-    const onAdd = (e) => {
-        console.log(e);
-    }
+    useEffect(() => {
+        console.log(cantidadSumada);
+    }, [cantidadSumada]);
 
 
     return (
@@ -18,7 +19,7 @@ const ItemDetail = ({ match }) => {
             <h1>{item.title}</h1>
             <img src={item.pictureUrl} alt={item.title} style={{width: "500px", height: "500px"}} />
             <p>{item.description_long}</p>
-            <ItemCount initial={0} stock={10} onAdd={onAdd}/>
+            <ItemCount stock="10" initial="0" onAdd={setCantidadSumada} />
         </div>
     )
 }

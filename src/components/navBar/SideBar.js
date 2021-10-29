@@ -16,7 +16,9 @@ const SideBar = () => {
                 <Link to="/" className="w3-bar-item w3-button">Productos</Link>
                 <Link to="/contact" className="w3-bar-item w3-button">Contacto</Link>
                 <Link to="/about" className="w3-bar-item w3-button">Acerca de Miel Bavio</Link>
-                <CartWidget/>
+                <Link to="/Cart" className="w3-bar-item w3-button">
+                    <CartWidget/>
+                </Link>
             </div>
         </div>
     )

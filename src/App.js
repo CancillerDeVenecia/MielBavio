@@ -10,9 +10,14 @@ import Home from './views/Home/Home';
 import About from './views/About/About';
 import Contact from './views/Contact/Contact';
 import ItemDetail from './views/ItemDetail/ItemDetail';
+import Cart from './views/Cart/Cart';
+
+// Context
+import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
+    <CartProvider>
     <Router>
     <div className="App">
       <SideBar />
@@ -22,9 +27,11 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/item/:id" component={ItemDetail} />
-      </Switch>
+        <Route path="/cart" component={Cart} />
+      </Switch>   
     </div>
     </Router>
+    </CartProvider>
   );
 }
 

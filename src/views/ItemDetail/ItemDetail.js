@@ -1,19 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import ItemCount from '../../components/itemCount/ItemCount';
-import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 const ItemDetail = ({ match }) => {
     const [item, setItem] = useState({});
 
     useEffect(() => {
         fetch(`https://my-json-server.typicode.com/CancillerDeVenecia/mielJson/productos/${match.params.id}`).then((response) => response.json()).then((data) => setItem(data));
-    });
+    }, [])
+
+    const [ addItems ] = useContext(CartContext);
 
 
 
         //Contador y sus metodos
         const[itemCantidad, setItemCantidad] = useState(0);
-        const[faltaAgregar, setFaltaAgregar] = useState(true);
         let stock = 10;
         
     
@@ -31,11 +32,6 @@ const ItemDetail = ({ match }) => {
             }
         }
 
-        const addItem = () => {
-            console.log(itemCantidad);
-            setFaltaAgregar(false);
-        }
-
         //
 
 
@@ -44,7 +40,7 @@ const ItemDetail = ({ match }) => {
             <h1>{item.title}</h1>
             <img src={item.pictureUrl} alt={item.title} style={{width: "500px", height: "500px"}} />
             <p>{item.description_long}</p>
-            {faltaAgregar ? <ItemCount itemCantidad={itemCantidad} addItem={addItem} sumItem={sumItem} removeItem={removeItem}/> : <Link to="/Cart" className="w3-black w3-text-amber w3-button w3-round">Terminar Compra</Link>}
+            <ItemCount itemCantidad={itemCantidad} addItem={() => addItems(item, itemCantidad)} sumItem={sumItem} removeItem={removeItem}/>
         </div>
     )
 }

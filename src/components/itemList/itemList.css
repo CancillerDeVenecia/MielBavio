@@ -17,7 +17,8 @@
 }
 
 #itemList .item {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
 }
 
 #itemList .item h2 {
@@ -27,6 +28,5 @@
 
 #itemList .item .precio {
   font-size: 20px;
-  margin-top: 9px;
 }
 /*# sourceMappingURL=itemList.css.map */

@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './w3/w3colors.css';
 
 // Components
 import Header from './components/header/Header'

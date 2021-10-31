@@ -29,7 +29,6 @@ export const CartProvider = ({ children }) => {
         newItem.quantity = cantidad;
         itemsItems.push(newItem) 
         setCartItems(itemsItems);
-        console.log(cartItems);
         }                       
     
 }
@@ -38,31 +37,45 @@ export const CartProvider = ({ children }) => {
         setCartItems([]);
     }
 
-    const removeItem = (item) => {
+    const removeItem = (id) => {
+        
         let itemsItems = cartItems;
 
         const checkItems = (lista) => {
-            return lista.id === item.id;
+            return lista.id === id;
         }
 
         let indexToDelete = itemsItems.findIndex(checkItems);
 
-        itemsItems.slice(indexToDelete, indexToDelete);
 
+        itemsItems.splice(indexToDelete, 1);
+
+        if (itemsItems.length === 0) {
+            clearList();
+        } else {
         setCartItems(itemsItems);
     }
 
-    const isInCart = (item) => {
+}
+
+    const isInCart = (item) => {  
+
         const checkItems = (lista) => {
             return lista.id === item.id;
         }
-        
-        return cartItems.some(checkItems);
+
+        let indexToShow = cartItems.findIndex(checkItems);
+
+        if (cartItems.some(checkItems)) {
+            alert(`Ya hay ${cartItems[indexToShow].quantity} productos de este tipo en el carrito`)    
+        } else {
+            alert("Aun no hay productos de este tipo en el carrito!")
+        }
         
     }
 
     return (
-        <CartContext.Provider value={[addItems, cartItems, clearList, removeItem, isInCart]}> 
+        <CartContext.Provider value={{addItems, cartItems, clearList, removeItem, isInCart}}> 
         {children}
         </CartContext.Provider>
     )

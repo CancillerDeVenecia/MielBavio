@@ -18,7 +18,7 @@ const ItemCount = ({sumItem, removeItem, itemCantidad, addItem}) => {
                 <Plus className="w3-text-amber"/>
             </button>
 
-            <button className="itemAdd" onClick={addItem}>Agregar</button>
+            <button className="itemAdd w3-button w3-card" onClick={addItem}>Agregar</button>
             
         </div>  
     )

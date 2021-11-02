@@ -11,7 +11,7 @@ let w3_close = () => {
 
 const SideBar = () => {
 
-    const { cartItems } = useContext(CartContext);
+    const { totalItems } = useContext(CartContext);
 
     return (
         <div>
@@ -20,16 +20,16 @@ const SideBar = () => {
                 <Link to="/" className="w3-bar-item w3-button">Productos</Link>
                 <Link to="/contact" className="w3-bar-item w3-button">Contacto</Link>
                 <Link to="/about" className="w3-bar-item w3-button">Acerca de Miel Bavio</Link>
-                {cartItems.length > 0 &&
+                {totalItems > 0 &&
                     <Link to="/Cart" className="w3-bar-item w3-button">
-                        <CartWidget/> <p style={{display: "inline"}}>{cartItems.length}</p>
+                        <CartWidget/> <p style={{display: "inline"}}>{totalItems}</p>
                     </Link>
-                }
-                
+                }                                
             </div>
         </div>
     )
 }
 
+/* } */
 
 export default SideBar

@@ -5,15 +5,20 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
     
     const [cartItems, setCartItems] = useState([]);
+    const [totalItems, setTotalItems] = useState(0)
 
-    
+    const sumTotal = () => {
+        setTotalItems(cartItems.reduce((sumador, item) => {
+            let total = sumador + item.quantity;
+            return total;
+        }, 0))
+    }
 
 
     const addItems = (item, cantidad) => {
         const newItem = item;
-        const itemsItems = cartItems;
-
-
+        const itemsItems = cartItems;    
+        
         const checkItems = (lista) => {
             return lista.id === item.id;
         }
@@ -23,39 +28,47 @@ export const CartProvider = ({ children }) => {
             let cantidadExistente = itemsItems[itemsItems.findIndex(checkItems)].quantity;
             let nuevaCantidad = cantidad + cantidadExistente;
             itemsItems[itemsItems.findIndex(checkItems)].quantity = nuevaCantidad;
-            setCartItems(itemsItems);
-            console.log(cartItems);
+            setCartItems(itemsItems.slice());
+            sumTotal();
         } else {
         newItem.quantity = cantidad;
         itemsItems.push(newItem) 
-        setCartItems(itemsItems);
+        setCartItems(itemsItems.slice());
+        sumTotal();
         }                       
     
 }
 
+    const sumQuantity = (item) => {
+        let itemsItems = cartItems;
+        const checkItems = (lista) => {
+            return lista.id === item.id;
+        }
+        let cantidadExistente = itemsItems[itemsItems.findIndex(checkItems)].quantity;
+            itemsItems[itemsItems.findIndex(checkItems)].quantity = cantidadExistente + 1;
+            setCartItems(itemsItems.slice());
+            setTotalItems(totalItems + 1);
+    }
+
+    const minusQuantity = (item) => {
+        let itemsItems = cartItems;
+        const checkItems = (lista) => {
+            return lista.id === item.id;
+        }
+        let cantidadExistente = itemsItems[itemsItems.findIndex(checkItems)].quantity;
+            itemsItems[itemsItems.findIndex(checkItems)].quantity = cantidadExistente - 1;
+            setCartItems(itemsItems.slice());
+            setTotalItems(totalItems - 1);
+    }
+
     const clearList = () => {
         setCartItems([]);
+        setTotalItems(0);
     }
 
-    const removeItem = (id) => {
-        
-        let itemsItems = cartItems;
-
-        const checkItems = (lista) => {
-            return lista.id === id;
-        }
-
-        let indexToDelete = itemsItems.findIndex(checkItems);
-
-
-        itemsItems.splice(indexToDelete, 1);
-
-        if (itemsItems.length === 0) {
-            clearList();
-        } else {
-        setCartItems(itemsItems);
-    }
-
+    const removeItem = (producto) => {        
+        setTotalItems(totalItems - producto.quantity)
+        setCartItems(cartItems.filter((item) => item.id !== producto.id));        
 }
 
     const isInCart = (item) => {  
@@ -75,7 +88,7 @@ export const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{addItems, cartItems, clearList, removeItem, isInCart}}> 
+        <CartContext.Provider value={{addItems, cartItems, clearList, removeItem, isInCart, totalItems, sumQuantity, minusQuantity}}> 
         {children}
         </CartContext.Provider>
     )

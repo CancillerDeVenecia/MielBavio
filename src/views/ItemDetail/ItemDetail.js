@@ -5,14 +5,20 @@ import { Dimmer, Loader} from 'semantic-ui-react';
 
 const ItemDetail = ({ match }) => {
     const [item, setItem] = useState({});
-    const [onload, setOnLoad] = useState(false)
+
+    const seleccionado = match.params.id;
+
+    const { addItems, isInCart, onLoad, setOnLoad, importData, productos } = useContext(CartContext);
 
     useEffect(() => {
-        setOnLoad(true);
-        fetch(`https://my-json-server.typicode.com/CancillerDeVenecia/mielJson/productos/${match.params.id}`).then((response) => response.json()).then((data) => setItem(data)).finally(() => setOnLoad(false));
-    }, [match.params.id])
-
-    const { addItems, isInCart } = useContext(CartContext);
+        importData();
+        productos.forEach(producto => {
+            if (producto.id === seleccionado) {
+                setItem(producto);
+                setOnLoad(false);
+            }
+        });
+    }, [importData, seleccionado, productos, setOnLoad])
 
 
 
@@ -35,8 +41,6 @@ const ItemDetail = ({ match }) => {
             }
         }
 
-        //{onload ? : 
-
 
     return (
         <div className="w3-black">
@@ -47,7 +51,7 @@ const ItemDetail = ({ match }) => {
             <p className="w3-padding">{item.description_long}</p>
             <button className="w3-button w3-card w3-margin-bottom" onClick={() => isInCart(item)}>Hay en el carrito?</button>
             <ItemCount itemCantidad={itemCantidad} addItem={() => addItems(item, itemCantidad)} sumItem={sumItem} removeItem={removeItem}/>
-            <Dimmer inverted active={onload}><Loader/></Dimmer>
+            <Dimmer inverted active={onLoad}><Loader/></Dimmer>
         </div>
         </div>
         </div>

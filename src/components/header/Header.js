@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import NavBar from '../navBar/NavBar';
 import headerImg1 from '../../assets/img/header1.jpg';
 import headerImg2 from '../../assets/img/header2.JPG';
 import headerImg3 from '../../assets/img/header3.JPG';
@@ -24,6 +25,7 @@ const Header = () => {
 
     return (
         <div className="header">   
+            <NavBar/>
             <Link to="/"><img src={headerImg} alt="mieles" className="header-img" /></Link>
         </div>
     )

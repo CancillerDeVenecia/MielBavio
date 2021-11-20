@@ -5,10 +5,9 @@ import { Dimmer, Loader} from 'semantic-ui-react';
 
 const ItemDetail = ({ match }) => {
     const [item, setItem] = useState({});
-
     const seleccionado = match.params.id;
 
-    const { addItems, isInCart, onLoad, setOnLoad, importData, productos } = useContext(CartContext);
+    const { addItems, onLoad, setOnLoad, importData, productos } = useContext(CartContext);
 
     useEffect(() => {
         importData();
@@ -23,7 +22,7 @@ const ItemDetail = ({ match }) => {
 
 
         //Contador y sus metodos
-        const[itemCantidad, setItemCantidad] = useState(0);
+        const[itemCantidad, setItemCantidad] = useState(1);
         let stock = 10;
         
     
@@ -36,7 +35,7 @@ const ItemDetail = ({ match }) => {
         }
     
         const removeItem = () => {
-            if(itemCantidad > 0) {
+            if(itemCantidad > 1) {
                 setItemCantidad(itemCantidad - 1);
             }
         }
@@ -49,8 +48,7 @@ const ItemDetail = ({ match }) => {
             <h1 className="w3-text-theme w3-padding">{item.title}</h1>            
             <img className="w3-card w3-image w3-mobile" src={item.pictureUrl} alt={item.title} style={{maxWidth: "500px", maxHeight: "500px"}} />
             <p className="w3-padding">{item.description_long}</p>
-            <button className="w3-button w3-card w3-margin-bottom" onClick={() => isInCart(item)}>Hay en el carrito?</button>
-            <ItemCount itemCantidad={itemCantidad} addItem={() => addItems(item, itemCantidad)} sumItem={sumItem} removeItem={removeItem}/>
+            <ItemCount itemCantidad={itemCantidad} addItem={() => addItems(item, itemCantidad)} price={item.price} sumItem={sumItem} removeItem={removeItem}/>
             <Dimmer inverted active={onLoad}><Loader/></Dimmer>
         </div>
         </div>

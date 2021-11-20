@@ -45,7 +45,7 @@ const Category = ({match}) => {
                     </div>    
                 )
             })}
-            {vacia && <div><span className="w3-large">Proximamente!</span></div>}
+            {vacia === true && <div><span className="w3-large">Proximamente!</span></div>}
             <Dimmer inverted active={onLoad}><Loader/></Dimmer>
         </div>
     )

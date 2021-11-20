@@ -6,7 +6,6 @@
     ". sum .";
     align-items: baseline; 
     padding: 0.2vh;
-    background-color: rgb(29, 29, 29);
     color: white;
 }
 
@@ -20,7 +19,7 @@
 .minus {
     grid-area: minus;
     background-color: transparent;
-    border: none;
+    border: none
 }
 
 .itemCantidad {
@@ -29,14 +28,7 @@
 }
 
 .itemAdd {
-    font-family: 'Roboto', sans-serif;
     grid-area: sum;
     justify-items: center;
-    border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 5px;
-    background-color: rgba(128, 128, 128, 0.288);
-    border:none;
-    color: #fbbd08;
 }
 

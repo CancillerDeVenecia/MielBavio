@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, Dropdown } from 'semantic-ui-react'
 import Logo from '../../assets/icons/logoPuroYellow.png'
+import { CartContext } from '../../context/CartContext';
 
 
 const NavBar = () => {
+
+
+    const { totalItems } = useContext(CartContext)
 
     const [colorSelected, setColorSelected] = useState(false)
 
@@ -30,7 +34,7 @@ const NavBar = () => {
 
 
         <Menu.Menu position="right" >
-            <Menu.Item><i className="yellow shopping cart icon"></i></Menu.Item>
+            <Menu.Item className="w3-text-theme" as={Link} to="/cart">{totalItems}<i className="yellow shopping cart icon"></i></Menu.Item>
         
         {/*totalItems > 0 &&        
                     <Link to="/Cart" className="w3-bar-item w3-button">

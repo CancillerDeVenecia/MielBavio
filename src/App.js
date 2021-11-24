@@ -11,6 +11,7 @@ import About from './views/About/About';
 import ItemDetail from './views/ItemDetail/ItemDetail';
 import Cart from './views/Cart/Cart';
 import Category from './views/Category/Category';
+import Buy from './views/Buy/Buy';
 
 // Context
 import { CartProvider } from './context/CartContext';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/item/:id" component={ItemDetail} />
         <Route path="/category/:id" component={Category} />
         <Route path="/cart" component={Cart} />
+        <Route path="/buy" component={Buy} />
       </Switch>   
     </div>
     </Router>

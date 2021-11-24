@@ -80,9 +80,13 @@ export const CartProvider = ({ children }) => {
             return lista.id === item.id;
         }
         let cantidadExistente = itemsItems[itemsItems.findIndex(checkItems)].quantity;
+        if (cantidadExistente > 1) {
             itemsItems[itemsItems.findIndex(checkItems)].quantity = cantidadExistente - 1;
             setCartItems(itemsItems.slice());
             setTotalItems(totalItems - 1);
+        } else {
+            removeItem(item)
+        }    
     }
 
     const clearList = () => {

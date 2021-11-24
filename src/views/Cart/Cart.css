@@ -1,4 +1,21 @@
+.total {
+    font-family: Roboto, sans-serif;
+}
+
 .thumbnail {
     max-width: 100px;
     max-height: 100px;    
+}
+
+.productosContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.botoncito {
+    margin: 5px;
+
 }
